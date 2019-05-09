@@ -1,12 +1,9 @@
 [![Build Status](https://travis-ci.com/dcs4cop/xcube.svg?branch=master)](https://travis-ci.com/dcs4cop/xcube)
-[![codecov](https://codecov.io/gh/dcs4cop/xcube/branch/master/graph/badge.svg)](https://codecov.io/gh/dcs4cop/xcube)
 
 
+# xcube-gen-rbins
 
-
-# xcube
-
-Data cubes with xarray
+This is a plugin for xcube which can be used for processing inputdata provided by RBINS. 
 
 # Installation
 
@@ -18,7 +15,7 @@ First
     
 Then
     
-    $ activate xcube-dev
+    $ activate xcube
     $ python setup.py develop
 
 Update

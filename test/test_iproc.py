@@ -3,7 +3,7 @@ import unittest
 import numpy as np
 import xarray as xr
 
-from xcube.api.gen.rbins.iproc import RbinsSeviriHighrocDailyInputProcessor, \
+from xcube_gen_rbins.iproc import RbinsSeviriHighrocDailyInputProcessor, \
     RbinsSeviriHighrocSceneInputProcessor
 
 

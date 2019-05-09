@@ -25,42 +25,14 @@
 from setuptools import setup, find_packages
 
 requirements = [
-    #
-    # xcube requirements are given in file ./environment.yml.
-    #
-    # All packages here have been commented out, because otherwise setuptools will install
-    # additional pip packages although conda packages with same name are already available
-    # in the conda environment defined by file ./environment.yml.
-    #
-    # 'affine',
-    # 'click',
-    # 'cmocean',
-    # 'dask',
-    # 'fiona',
-    # 'gdal',
-    # 'matplotlib',
-    # 'netcdf4',
-    # 'numba',
-    # 'numpy',
-    # 'pandas',
-    # 'pillow',
-    # 'proj4',
-    # 'pyyaml',
-    # 'rasterio',
-    # 's3fs',
-    # 'setuptools',
-    # 'shapely',
-    # 'tornado',
-    # 'xarray',
-    # 'zarr',
+    'xcube'
 ]
 
 packages = find_packages(exclude=["test", "test.*"])
 
 # Same effect as "from cate import version", but avoids importing cate:
 version = None
-with open('xcube/version.py') as f:
-    exec(f.read())
+
 
 setup(
     name="xcube-gen-rbins",
@@ -70,16 +42,8 @@ setup(
     author='xcube Development Team',
     packages=packages,
     entry_points={
-        'console_scripts': [
-            'xcube = xcube.cli.cli:main',
-            'xcube-gen = xcube.cli.gen:main',
-            'xcube-restime = xcube.cli.restime:main',
-        ],
         'xcube_plugins': [
-            'xcube_genl2c_default = xcube.api.gen.default:init_plugin',
-            'xcube_genl2c_snap = xcube.api.gen.snap:init_plugin',
-            'xcube_genl2c_rbins = xcube.api.gen.rbins:init_plugin',
-            'xcube_genl2c_vito = xcube.api.gen.vito:init_plugin',
+            'xcube_gen_rbins = xcube_gen_rbins:init_plugin',
         ],
     },
     install_requires=requirements,
