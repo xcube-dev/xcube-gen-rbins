@@ -4,10 +4,12 @@
 # xcube-gen-rbins
 
 This is a plugin for xcube which can be used for processing inputdata provided by RBINS. 
+With xcube-gen-rbins all features of xcube can be used. 
+In order to use the xcube-gen-rbins you need to install xcube first: 
 
 # Installation
 
-First
+First install xcube
     
     $ git clone https://github.com/dcs4cop/xcube.git
     $ cd xcube
@@ -18,10 +20,22 @@ Then
     $ activate xcube
     $ python setup.py develop
 
-Update
+Secondly, clone the xcube-gen-rbins repository:
+
+    $ git clone https://github.com/dcs4cop/xcube-gen-rbins.git
+    $ cd xcube-gen-rbins
+    $ python setup.py develop
+    
+Once in a while make an update of xcube and xcube-gen-rbins:
     
     $ activate xcube
     $ git pull --force
+    $ cd xcube
+    $ python setup.py develop
+    
+Then change into the xcube-gen-rbins directory:
+
+    $ cd xcube-gen-rbins
     $ python setup.py develop
     
     
@@ -37,9 +51,9 @@ with [coverage report](https://pytest-cov.readthedocs.io/en/latest/reporting.htm
 
     $ pytest --cov-report html --cov=xcube
 
-# Developer Guide
+# Developer Guide 
 
-...is [here](docs/DEV-GUIDE.md).
+...is [here](https://github.com/dcs4cop/xcube/blob/master/docs/DEV-GUIDE.md).
 
 
 # Docker
