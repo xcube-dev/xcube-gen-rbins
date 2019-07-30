@@ -23,40 +23,37 @@ class RbinsProcessTest(unittest.TestCase):
 
     # noinspection PyMethodMayBeStatic
     def test_process_inputs_single(self):
-        path, status = process_inputs_wrapper(
-            input_files=[get_inputdata_path('SEVIRI_SNS_EUR_201708060700_QV_2013b.1_v02.nc')],
-            output_name='l2c-single',
+        status = process_inputs_wrapper(
+            input_paths=[get_inputdata_path('SEVIRI_SNS_EUR_201708060700_QV_2013b.1_v02.nc')],
+            output_path='l2c-single.nc',
             output_writer='netcdf4',
             append_mode=False)
         self.assertEqual(True, status)
-        self.assertEqual(os.path.join('.', 'l2c-single.nc'), path)
 
     def _test_process_inputs_append_multiple_nc(self):
-        path, status = process_inputs_wrapper(
-            input_files=[get_inputdata_path('SEVIRI_SNS_EUR_201708060715_QV_2013b.1_v02.nc')],
-            output_name='l2c',
+        status = process_inputs_wrapper(
+            input_paths=[get_inputdata_path('SEVIRI_SNS_EUR_201708060715_QV_2013b.1_v02.nc')],
+            output_path='l2c.nc',
             output_writer='netcdf4',
             append_mode=True)
         self.assertEqual(True, status)
-        self.assertEqual(os.path.join('.', 'l2c.nc'), path)
 
     def test_process_inputs_append_multiple_zarr(self):
-        path, status = process_inputs_wrapper(
-            input_files=[get_inputdata_path('SEVIRI_SNS_EUR_201708060730_QV_2013b.1_v02.nc')],
-            output_name='l2c',
+        status = process_inputs_wrapper(
+            input_paths=[get_inputdata_path('SEVIRI_SNS_EUR_201708060730_QV_2013b.1_v02.nc')],
+            output_path='l2c.zarr',
             output_writer='zarr',
             append_mode=True)
         self.assertEqual(True, status)
-        self.assertEqual(os.path.join('.', 'l2c.zarr'), path)
 
 
 # noinspection PyShadowingBuiltins
-def process_inputs_wrapper(input_files=None,
-                           output_name=None,
+def process_inputs_wrapper(input_paths=None,
+                           output_path=None,
                            output_writer='netcdf4',
                            append_mode=False):
-    return gen_cube(input_files=input_files, input_processor='rbins-seviri-highroc-scene-l2',
+    return gen_cube(input_paths=input_paths, input_processor='rbins-seviri-highroc-scene-l2',
                     output_region=(-4., 47., 12., 56.), output_size=(320, 180), output_resampling='Nearest',
-                    output_dir='.', output_name=output_name, output_writer=output_writer,
+                    output_path=output_path, output_writer=output_writer,
                     output_variables=[('KPAR', None), ('SPM', None), ('TUR', None)], append_mode=append_mode,
                     dry_run=False, monitor=None)
