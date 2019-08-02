@@ -20,15 +20,13 @@
 # SOFTWARE.
 
 import datetime
-from typing import Tuple, Optional
+from typing import Optional, Tuple
 
 import numpy as np
 import xarray as xr
-
-from xcube.util.constants import CRS_WKT_EPSG_4326
-from xcube.util.timecoord import get_time_in_days_since_1970
-from xcube.api.gen.iproc import XYInputProcessor, ReprojectionInfo, register_input_processor
 from xcube.api.gen.default.iproc import DefaultInputProcessor
+from xcube.api.gen.iproc import ReprojectionInfo, XYInputProcessor, register_input_processor
+from xcube.util.constants import CRS_WKT_EPSG_4326
 
 
 class RbinsSeviriHighrocSceneInputProcessor(XYInputProcessor):
@@ -55,7 +53,6 @@ class RbinsSeviriHighrocSceneInputProcessor(XYInputProcessor):
 
     def get_time_range(self, dataset: xr.Dataset) -> Tuple[float, float]:
         return DefaultInputProcessor().get_time_range(dataset)
-
 
 
 class RbinsSeviriHighrocDailyInputProcessor(XYInputProcessor):
