@@ -52,8 +52,8 @@ def process_inputs_wrapper(input_paths=None,
                            output_path=None,
                            output_writer='netcdf4',
                            append_mode=False):
-    return gen_cube(input_paths=input_paths, input_processor='rbins-seviri-highroc-scene-l2',
+    return gen_cube(input_paths=input_paths, input_processor_name='rbins-seviri-highroc-scene-l2',
                     output_region=(-4., 47., 12., 56.), output_size=(320, 180), output_resampling='Nearest',
-                    output_path=output_path, output_writer=output_writer,
+                    output_path=output_path, output_writer_name=output_writer,
                     output_variables=[('KPAR', None), ('SPM', None), ('TUR', None)], append_mode=append_mode,
                     dry_run=False, monitor=None)
