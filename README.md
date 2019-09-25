@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/dcs4cop/xcube.svg?branch=master)](https://travis-ci.com/dcs4cop/xcube)
+[![Build Status](https://travis-ci.com/dcs4cop/xcube-gen-rbins.svg?branch=master)](https://travis-ci.com/dcs4cop/xcube-gen-rbins)
 
 
 # xcube-gen-rbins
