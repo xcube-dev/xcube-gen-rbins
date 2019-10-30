@@ -1,7 +1,5 @@
-#!/usr/bin/env python3
-
 # The MIT License (MIT)
-# Copyright (c) 2019 by Brockmann Consult GmbH
+# Copyright (c) 2019 by the xcube development team and contributors
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this software and associated documentation files (the "Software"), to deal in
@@ -22,20 +20,16 @@
 # SOFTWARE.
 
 
-from setuptools import setup, find_packages
+def init_plugin(ext_registry: 'xcube.api.ExtensionRegistry'):
+    ext_registry.add_ext_lazy(_input_processor_1, 'iproc', 'rbins-seviri-highroc-scene-l2')
+    ext_registry.add_ext_lazy(_input_processor_2, 'iproc', 'rbins-seviri-highroc-daily-l2')
 
-requirements = [
-    'xcube'
-]
 
-packages = find_packages(exclude=["test", "test.*"])
+def _input_processor_1():
+    from .iproc import RbinsSeviriHighrocSceneInputProcessor
+    return RbinsSeviriHighrocSceneInputProcessor()
 
-setup(
-    name="xcube-gen-rbins",
-    version='0.3.0.dev0',
-    description='xcube input processor for data provided by RBINS',
-    license='MIT',
-    author='xcube Development Team',
-    packages=packages,
-    install_requires=requirements,
-)
+
+def _input_processor_2():
+    from .iproc import RbinsSeviriHighrocDailyInputProcessor
+    return RbinsSeviriHighrocDailyInputProcessor()

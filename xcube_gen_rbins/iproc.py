@@ -25,7 +25,7 @@ from typing import Optional, Tuple
 import numpy as np
 import xarray as xr
 from xcube.api.gen.default.iproc import DefaultInputProcessor
-from xcube.api.gen.iproc import ReprojectionInfo, XYInputProcessor, register_input_processor
+from xcube.api.gen.iproc import ReprojectionInfo, XYInputProcessor
 from xcube.util.constants import CRS_WKT_EPSG_4326
 
 
@@ -103,9 +103,3 @@ class RbinsSeviriHighrocDailyInputProcessor(XYInputProcessor):
                                                           encoding=dict(units='seconds since 1970-01-01',
                                                                         calendar='standard')))
         return dataset
-
-
-def init_plugin():
-    """ Register a DatasetIO object: SnapOlciHighrocL2NetcdfInputProcessor() """
-    register_input_processor(RbinsSeviriHighrocSceneInputProcessor())
-    register_input_processor(RbinsSeviriHighrocDailyInputProcessor())
