@@ -20,9 +20,13 @@
 # SOFTWARE.
 
 
-def init_plugin(ext_registry: 'xcube.api.ExtensionRegistry'):
-    ext_registry.add_ext_lazy(_input_processor_1, 'iproc', 'rbins-seviri-highroc-scene-l2')
-    ext_registry.add_ext_lazy(_input_processor_2, 'iproc', 'rbins-seviri-highroc-daily-l2')
+def init_plugin(ext_registry: 'xcube.util.ext.ExtensionRegistry'):
+    ext_registry.add_ext_lazy(_input_processor_1,
+                              'xcube.core.gen.iproc', 'rbins-seviri-highroc-scene-l2',
+                              description='RBINS SEVIRI HIGHROC single-scene Level-2 NetCDF inputs')
+    ext_registry.add_ext_lazy(_input_processor_2,
+                              'xcube.core.gen.iproc', 'rbins-seviri-highroc-daily-l2',
+                              description='RBINS SEVIRI HIGHROC daily Level-2 NetCDF inputs')
 
 
 def _input_processor_1():
