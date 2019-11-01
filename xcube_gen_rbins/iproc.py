@@ -24,6 +24,7 @@ from typing import Optional, Tuple
 
 import numpy as np
 import xarray as xr
+
 from xcube.api.gen.default.iproc import DefaultInputProcessor
 from xcube.api.gen.iproc import ReprojectionInfo, XYInputProcessor
 from xcube.util.constants import CRS_WKT_EPSG_4326
@@ -34,13 +35,8 @@ class RbinsSeviriHighrocSceneInputProcessor(XYInputProcessor):
     Input processor for RBINS' HIGHROC single-scene Level-2 NetCDF inputs.
     """
 
-    @property
-    def name(self) -> str:
-        return 'rbins-seviri-highroc-scene-l2'
-
-    @property
-    def description(self) -> str:
-        return 'RBINS SEVIRI HIGHROC single-scene Level-2 NetCDF inputs'
+    def __init__(self):
+        super().__init__('rbins-seviri-highroc-scene-l2')
 
     @property
     def input_reader(self) -> str:
@@ -60,13 +56,8 @@ class RbinsSeviriHighrocDailyInputProcessor(XYInputProcessor):
     Input processor for RBINS' HIGHROC daily Level-2 NetCDF inputs.
     """
 
-    @property
-    def name(self) -> str:
-        return 'rbins-seviri-highroc-daily-l2'
-
-    @property
-    def description(self) -> str:
-        return 'RBINS SEVIRI HIGHROC daily Level-2 NetCDF inputs'
+    def __init__(self):
+        super().__init__('rbins-seviri-highroc-daily-l2')
 
     @property
     def input_reader(self) -> str:
