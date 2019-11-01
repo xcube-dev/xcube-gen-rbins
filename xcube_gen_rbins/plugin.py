@@ -19,21 +19,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-
-def init_plugin(ext_registry: 'xcube.util.ext.ExtensionRegistry'):
-    ext_registry.add_ext_lazy(_input_processor_1,
-                              'xcube.core.gen.iproc', 'rbins-seviri-highroc-scene-l2',
-                              description='RBINS SEVIRI HIGHROC single-scene Level-2 NetCDF inputs')
-    ext_registry.add_ext_lazy(_input_processor_2,
-                              'xcube.core.gen.iproc', 'rbins-seviri-highroc-daily-l2',
-                              description='RBINS SEVIRI HIGHROC daily Level-2 NetCDF inputs')
+from xcube.util import extension
 
 
-def _input_processor_1():
-    from .iproc import RbinsSeviriHighrocSceneInputProcessor
-    return RbinsSeviriHighrocSceneInputProcessor()
-
-
-def _input_processor_2():
-    from .iproc import RbinsSeviriHighrocDailyInputProcessor
-    return RbinsSeviriHighrocDailyInputProcessor()
+def init_plugin(ext_registry: extension.ExtensionRegistry):
+    ext_registry.add_extension(
+        loader=extension.import_component('xcube_gen_rbins.iproc:RbinsSeviriHighrocSceneInputProcessor', call=True),
+        point='xcube.core.gen.iproc', name='rbins-seviri-highroc-scene-l2',
+        description='RBINS SEVIRI HIGHROC single-scene Level-2 NetCDF inputs'
+    )
+    ext_registry.add_extension(
+        loader=extension.import_component('xcube_gen_rbins.iproc:RbinsSeviriHighrocDailyInputProcessor', call=True),
+        point='xcube.core.gen.iproc', name='rbins-seviri-highroc-daily-l2',
+        description='RBINS SEVIRI HIGHROC daily Level-2 NetCDF inputs'
+    )
