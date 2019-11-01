@@ -25,8 +25,8 @@ from typing import Optional, Tuple
 import numpy as np
 import xarray as xr
 
-from xcube.api.gen.default.iproc import DefaultInputProcessor
-from xcube.api.gen.iproc import ReprojectionInfo, XYInputProcessor
+from xcube.core.gen.default.iproc import DefaultInputProcessor
+from xcube.core.gen.iproc import ReprojectionInfo, XYInputProcessor
 from xcube.util.constants import CRS_WKT_EPSG_4326
 
 
