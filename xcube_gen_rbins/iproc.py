@@ -25,9 +25,9 @@ from typing import Optional, Tuple
 import numpy as np
 import xarray as xr
 
-from xcube.core.gen.default.iproc import DefaultInputProcessor
+from xcube.constants import CRS_WKT_EPSG_4326
+from xcube.core.gen.iproc import DefaultInputProcessor
 from xcube.core.gen.iproc import ReprojectionInfo, XYInputProcessor
-from xcube.util.constants import CRS_WKT_EPSG_4326
 
 
 class RbinsSeviriHighrocSceneInputProcessor(XYInputProcessor):
