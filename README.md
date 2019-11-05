@@ -53,10 +53,10 @@ with [coverage report](https://pytest-cov.readthedocs.io/en/latest/reporting.htm
 
 # Developer Guide 
 
-...is [here](https://github.com/dcs4cop/xcube/blob/master/docs/DEV-GUIDE.md).
+...is [here](https://xcube.readthedocs.io/en/latest/devguide.html).
 
 
 # User Guide
 
-Please use the [README](https://github.com/dcs4cop/xcube/blob/master/README.md) 
+Please use the [README](https://xcube.readthedocs.io/en/latest/index.html) 
 of xcube for further information. 
