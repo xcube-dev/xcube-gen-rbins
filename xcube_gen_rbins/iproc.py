@@ -24,7 +24,6 @@ from typing import Optional, Tuple
 
 import numpy as np
 import xarray as xr
-
 from xcube.constants import CRS_WKT_EPSG_4326
 from xcube.core.gen.iproc import DefaultInputProcessor
 from xcube.core.gen.iproc import ReprojectionInfo, XYInputProcessor
@@ -47,9 +46,6 @@ class RbinsSeviriHighrocSceneInputProcessor(XYInputProcessor):
                                 xy_crs=CRS_WKT_EPSG_4326,
                                 xy_gcp_step=1)
 
-    def get_time_for_sorting(self, dataset: xr.Dataset) -> Optional[str]:
-        return DefaultInputProcessor().get_time_for_sorting(dataset)
-
     def get_time_range(self, dataset: xr.Dataset) -> Tuple[float, float]:
         return DefaultInputProcessor().get_time_range(dataset)
 
@@ -70,6 +66,7 @@ class RbinsSeviriHighrocDailyInputProcessor(XYInputProcessor):
         return ReprojectionInfo(xy_var_names=('longitude', 'latitude'),
                                 xy_crs=CRS_WKT_EPSG_4326,
                                 xy_gcp_step=1)
+
     def get_time_for_sorting(self, dataset: xr.Dataset) -> Optional[str]:
         return DefaultInputProcessor().get_time_for_sorting(dataset)
 
