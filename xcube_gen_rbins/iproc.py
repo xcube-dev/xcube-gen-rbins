@@ -67,9 +67,6 @@ class RbinsSeviriHighrocDailyInputProcessor(XYInputProcessor):
                                 xy_crs=CRS_WKT_EPSG_4326,
                                 xy_gcp_step=1)
 
-    def get_time_for_sorting(self, dataset: xr.Dataset) -> Optional[str]:
-        return DefaultInputProcessor().get_time_for_sorting(dataset)
-
     def get_time_range(self, dataset: xr.Dataset) -> Optional[Tuple[float, float]]:
         return None
 
