@@ -32,7 +32,7 @@ packages = find_packages(exclude=["test", "test.*"])
 
 setup(
     name="xcube-gen-rbins",
-    version='0.3.0.dev0',
+    version='0.3.0.',
     description='xcube input processor for data provided by RBINS',
     license='MIT',
     author='xcube Development Team',
