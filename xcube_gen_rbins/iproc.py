@@ -20,13 +20,14 @@
 # SOFTWARE.
 
 import datetime
-from typing import Optional, Tuple
+from typing import Optional, Tuple, Dict, Any
 
 import numpy as np
 import xarray as xr
+
 from xcube.constants import CRS_WKT_EPSG_4326
 from xcube.core.gen.iproc import DefaultInputProcessor
-from xcube.core.gen.iproc import ReprojectionInfo, XYInputProcessor
+from xcube.core.gen.iproc import XYInputProcessor
 
 
 class RbinsSeviriHighrocSceneInputProcessor(XYInputProcessor):
@@ -38,13 +39,13 @@ class RbinsSeviriHighrocSceneInputProcessor(XYInputProcessor):
         super().__init__('rbins-seviri-highroc-scene-l2')
 
     @property
-    def input_reader(self) -> str:
-        return 'netcdf4'
-
-    def get_reprojection_info(self, dataset: xr.Dataset) -> ReprojectionInfo:
-        return ReprojectionInfo(xy_var_names=('lon', 'lat'),
-                                xy_crs=CRS_WKT_EPSG_4326,
-                                xy_gcp_step=1)
+    def default_parameters(self) -> Dict[str, Any]:
+        default_parameters = super().default_parameters
+        default_parameters.update(input_reader='netcdf4',
+                                  xy_names=('lon', 'lat'),
+                                  xy_crs=CRS_WKT_EPSG_4326,
+                                  xy_gcp_step=1)
+        return default_parameters
 
     def get_time_range(self, dataset: xr.Dataset) -> Tuple[float, float]:
         return DefaultInputProcessor().get_time_range(dataset)
@@ -55,17 +56,17 @@ class RbinsSeviriHighrocDailyInputProcessor(XYInputProcessor):
     Input processor for RBINS' HIGHROC daily Level-2 NetCDF inputs.
     """
 
-    def __init__(self):
-        super().__init__('rbins-seviri-highroc-daily-l2')
+    def __init__(self, **parameters):
+        super().__init__('rbins-seviri-highroc-daily-l2', **parameters)
 
     @property
-    def input_reader(self) -> str:
-        return 'netcdf4'
-
-    def get_reprojection_info(self, dataset: xr.Dataset) -> ReprojectionInfo:
-        return ReprojectionInfo(xy_var_names=('longitude', 'latitude'),
-                                xy_crs=CRS_WKT_EPSG_4326,
-                                xy_gcp_step=1)
+    def default_parameters(self) -> Dict[str, Any]:
+        default_parameters = super().default_parameters
+        default_parameters.update(input_reader='netcdf4',
+                                  xy_names=('longitude', 'latitude'),
+                                  xy_crs=CRS_WKT_EPSG_4326,
+                                  xy_gcp_step=1)
+        return default_parameters
 
     def get_time_range(self, dataset: xr.Dataset) -> Optional[Tuple[float, float]]:
         return None
