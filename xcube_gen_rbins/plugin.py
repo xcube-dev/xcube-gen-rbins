@@ -25,13 +25,13 @@ from xcube.util import extension
 
 def init_plugin(ext_registry: extension.ExtensionRegistry):
     ext_registry.add_extension(
-        loader=extension.import_component('xcube_gen_rbins.iproc:RbinsSeviriHighrocSceneInputProcessor', call=True),
+        loader=extension.import_component('xcube_gen_rbins.iproc:RbinsSeviriHighrocSceneInputProcessor'),
         point=EXTENSION_POINT_INPUT_PROCESSORS,
         name='rbins-seviri-highroc-scene-l2',
         description='RBINS SEVIRI HIGHROC single-scene Level-2 NetCDF inputs'
     )
     ext_registry.add_extension(
-        loader=extension.import_component('xcube_gen_rbins.iproc:RbinsSeviriHighrocDailyInputProcessor', call=True),
+        loader=extension.import_component('xcube_gen_rbins.iproc:RbinsSeviriHighrocDailyInputProcessor'),
         point=EXTENSION_POINT_INPUT_PROCESSORS,
         name='rbins-seviri-highroc-daily-l2',
         description='RBINS SEVIRI HIGHROC daily Level-2 NetCDF inputs'

@@ -19,8 +19,8 @@ class RbinsSeviriHighrocSceneInputProcessorTest(unittest.TestCase):
 
     def test_reprojection_info(self):
         reprojection_info = self.processor.get_reprojection_info(create_rbins_seviri_scene_dataset())
-        self.assertEqual(('lon', 'lat'), reprojection_info.xy_var_names)
-        self.assertEqual(1, reprojection_info.xy_gcp_step)
+        self.assertEqual(('lon', 'lat'), reprojection_info.xy_names)
+        self.assertEqual((1, 1), reprojection_info.xy_gcp_step)
 
     def test_pre_process(self):
         ds1 = create_rbins_seviri_scene_dataset()
@@ -45,8 +45,8 @@ class RbinsSeviriHighrocDailyInputProcessorTest(unittest.TestCase):
 
     def test_reprojection_info(self):
         reprojection_info = self.processor.get_reprojection_info(create_rbins_seviri_daily_dataset())
-        self.assertEqual(('longitude', 'latitude'), reprojection_info.xy_var_names)
-        self.assertEqual(1, reprojection_info.xy_gcp_step)
+        self.assertEqual(('longitude', 'latitude'), reprojection_info.xy_names)
+        self.assertEqual((1, 1), reprojection_info.xy_gcp_step)
 
     def test_pre_process(self):
         ds1 = create_rbins_seviri_daily_dataset()
